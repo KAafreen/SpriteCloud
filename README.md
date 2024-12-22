@@ -1,6 +1,6 @@
 # SpriteCloud
 
-This project contains UI test for Swag Labs login page and API tests for reqres create user APIs.
+This project contains UI test for Swag Labs login page and API tests for Reqres create user APIs.
 
 ## Table of Contents
 1. [Getting Started](#getting-started)
@@ -42,7 +42,7 @@ This project contains UI test for Swag Labs login page and API tests for reqres 
     testNG group=sanity, regression, ui etc
 2. Run Tests Using Gradle
     ```bash
-    ./gradlew test
+    ./gradlew clean test
    
 ## Reporting
 1. On test execution, testNG results are generated as default HTML report
