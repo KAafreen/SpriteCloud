@@ -34,10 +34,10 @@ tasks {
         testLogging.showStandardStreams = true // To print log trace in jenkins console
 
         useTestNG() {
-            includeGroups("LoginPage") // Test groups to be executed
+            includeGroups(System.getProperty("groups")) // Test groups to be executed
             //  systemProperty("environment", environmentValueToExecute) // Test environment on which test will execute
-            systemProperty("browser", "chrome") // Browser on which test will execute
-            systemProperty("seleniumHubUrl", "http://localhost:4444") // Set selenium grid url
+            systemProperty("browser", System.getProperty("browser")) // Browser on which test will execute
+            systemProperty("seleniumHubUrl", System.getProperty("seleniumHubUrl")) // Set selenium grid url
         }
     }
 }
