@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation("org.seleniumhq.selenium:selenium-java:4.11.0")
+    testImplementation("org.testng:testng:7.7.0")
+    implementation("io.rest-assured:rest-assured:5.3.0")
+
+    // Lombok dependency
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+    // Lombok for test scope
+    testCompileOnly 'org.projectlombok:lombok:1.18.30'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    implementation("org.slf4j:slf4j-api:2.0.0")
+    testImplementation("ch.qos.logback:logback-classic:1.4.11")
+
+
+}
+
+tasks {
+
+    test {
+        testLogging.showStandardStreams = true // To print log trace in jenkins console
+
+        useTestNG() {
+            includeGroups("LoginPage") // Test groups to be executed
+            //  systemProperty("environment", environmentValueToExecute) // Test environment on which test will execute
+            systemProperty("browser", "chrome") // Browser on which test will execute
+            systemProperty("seleniumHubUrl", "http://localhost:4444") // Set selenium grid url
+        }
+    }
+}
